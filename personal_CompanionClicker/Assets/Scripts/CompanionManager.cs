@@ -29,13 +29,18 @@ public class CompanionManager : MonoBehaviour
     {
         if (!purchased)
         {
-            autoClickManager.ChangeCompanionModifier(companionValue);
-            GetComponent<Image>().color = new Color32(100, 100, 100, 100);
-            purchased = true;
+            CheckShop();
         }
         else
         {
             // Do nothing
         }
+    }
+
+    private void CheckShop()
+    {
+        autoClickManager.ChangeCompanionModifier(companionValue);
+        GetComponent<Image>().color = new Color32(100, 100, 100, 100);
+        purchased = true;
     }
 }

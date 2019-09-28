@@ -25,6 +25,6 @@ public class ClickerManager : MonoBehaviour
     // Passes the current clicker value to the score manager
     public void ButtonClicked()
     {
-        FindObjectOfType<ScoreManager>().ChangeScore(clickValue);
+        FindObjectOfType<ScoreManager>().SetScore(clickValue);
     }
 }

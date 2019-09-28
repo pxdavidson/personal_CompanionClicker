@@ -48,7 +48,7 @@ public class AutoClickManager : MonoBehaviour
     // Updates the ScoreManager
     public void UpdateScoreManager(int lps)
     {
-        scoreManager.ChangeScore(lps);
+        scoreManager.SetScore(lps);
     }
 
     // Changes the companion mod passed on the value passed in

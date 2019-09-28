@@ -23,9 +23,15 @@ public class ScoreManager : MonoBehaviour
     }
 
     // Changes the score with a value passed in
-    public void ChangeScore(int value)
+    public void SetScore(int value)
     {
         score += (value);
         scoreDisplay.UpdateScore(score);
+    }
+
+    // Returns the current score
+    public int GetScore()
+    {
+        return score;
     }
 }
