@@ -8,7 +8,7 @@ public class AutoClickManager : MonoBehaviour
     float rawTimeElapsed = 0f;
     int timeElapsed = 0;
     int companionMod = 1;
-    int lovePerSecond = 1;
+    int lovePerSecond = 0;
 
     // Cache
     ScoreManager scoreManager; 
@@ -54,5 +54,11 @@ public class AutoClickManager : MonoBehaviour
     public void ChangeCompanionModifier(int newValue)
     {
         companionMod += newValue;
+    }
+
+    // Sets the autoclicker to start
+    public void ActivateAutoClicker(int lps)
+    {
+        lovePerSecond = lps;
     }
 }

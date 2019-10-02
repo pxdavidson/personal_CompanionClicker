@@ -7,7 +7,7 @@ public class CompanionManager : MonoBehaviour
 {
     // Variables
     [SerializeField] int companionValue = 10;
-    [SerializeField] int companionCost = 50;
+    [SerializeField] int upgradeCost = 50;
     bool purchased = false;
     
     // Cache
@@ -27,7 +27,7 @@ public class CompanionManager : MonoBehaviour
         
     }
 
-    // Checks if the companion has already been purcased
+    // Checks if the upgrade has already been purcased
     public void CheckAvailable()
     {
         if (!purchased)
@@ -40,10 +40,11 @@ public class CompanionManager : MonoBehaviour
         }
     }
 
+    // Checks the players balance before proceeding with purchase
     private void CheckBalance()
     {
         var loveCredit = FindObjectOfType<ScoreManager>().GetScore();
-        if (loveCredit >= companionCost)
+        if (loveCredit >= upgradeCost)
         {
             Purchase();
         }
@@ -53,11 +54,18 @@ public class CompanionManager : MonoBehaviour
         }
     }
 
+    // Makes the purchase
     private void Purchase()
     {
-        shopManager.DebitScore(companionCost);
+        shopManager.DebitScore(upgradeCost);
+        ApplyUpgrade();
+        purchased = true;
+    }
+
+    // APplies the upgrade
+    private void ApplyUpgrade()
+    {
         autoClickManager.ChangeCompanionModifier(companionValue);
         GetComponent<Image>().color = new Color32(100, 100, 100, 100);
-        purchased = true;
     }
 }
