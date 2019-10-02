@@ -5,6 +5,7 @@ using UnityEngine;
 public class ShopManager : MonoBehaviour
 {
     // Variables
+    
 
     // Cache
     ScoreManager scoreManager;
@@ -19,5 +20,11 @@ public class ShopManager : MonoBehaviour
     void Update()
     {
         
+    }
+
+    // Debits the score
+    public void DebitScore(int debit)
+    {
+        scoreManager.SetScore(-debit);
     }
 }

@@ -41,7 +41,6 @@ public class AutoClickManager : MonoBehaviour
     private void CalculateLovePerSecond()
     {
         int loveThisSecond = lovePerSecond * companionMod;
-        Debug.Log(companionMod);
         UpdateScoreManager(loveThisSecond);
     }
 
