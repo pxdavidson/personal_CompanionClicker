@@ -7,7 +7,7 @@ public class CompanionManager : MonoBehaviour
 {
     // Variables
     [SerializeField] int companionValue = 10;
-    [SerializeField] int upgradeCost = 50;
+    [SerializeField] int cost = 50;
     bool purchased = false;
     
     // Cache
@@ -44,7 +44,7 @@ public class CompanionManager : MonoBehaviour
     private void CheckBalance()
     {
         var loveCredit = FindObjectOfType<ScoreManager>().GetScore();
-        if (loveCredit >= upgradeCost)
+        if (loveCredit >= cost)
         {
             Purchase();
         }
@@ -57,7 +57,7 @@ public class CompanionManager : MonoBehaviour
     // Makes the purchase
     private void Purchase()
     {
-        shopManager.DebitScore(upgradeCost);
+        shopManager.DebitScore(cost);
         ApplyUpgrade();
         purchased = true;
     }
@@ -67,5 +67,11 @@ public class CompanionManager : MonoBehaviour
     {
         autoClickManager.ChangeCompanionModifier(companionValue);
         GetComponent<Image>().color = new Color32(100, 100, 100, 100);
+    }
+
+    // Returns the cost int
+    public int GetCost()
+    {
+        return cost;
     }
 }
