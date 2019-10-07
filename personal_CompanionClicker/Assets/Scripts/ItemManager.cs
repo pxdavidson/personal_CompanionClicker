@@ -7,7 +7,10 @@ public class ItemManager : MonoBehaviour
 {
     // Variables
     [SerializeField] int cost;
-    [SerializeField] int braceletBoost = 1;
+    [SerializeField] int autoClickValue = 1;
+    [SerializeField] int clickValue = 1;
+    [SerializeField] int companionValue = 10;
+    [SerializeField] int companionMultiplier = 0;
     bool purchased = false;
 
     // Start is called before the first frame update
@@ -22,12 +25,21 @@ public class ItemManager : MonoBehaviour
 
     }
 
-    // Checks if the upgrade has already been purcased
-    public void CheckAvailable()
+    // Process benefit for the friendship bracelet
+    public void AdjustAutoClicks()
     {
         if (!purchased)
         {
-            CheckBalance();
+            var loveCredit = FindObjectOfType<ScoreManager>().GetScore();
+            if (loveCredit >= cost)
+            {
+                Purchase();
+                FindObjectOfType<AutoClickManager>().SetAutoClickValue(autoClickValue);
+            }
+            else
+            {
+                // Do nothing
+            }
         }
         else
         {
@@ -35,13 +47,65 @@ public class ItemManager : MonoBehaviour
         }
     }
 
-    // Checks the players balance before proceeding with purchase
-    private void CheckBalance()
+    // Process benefit for the special scrunchie
+    public void AdjustClicks()
     {
-        var loveCredit = FindObjectOfType<ScoreManager>().GetScore();
-        if (loveCredit >= cost)
+        if (!purchased)
         {
-            Purchase();
+            var loveCredit = FindObjectOfType<ScoreManager>().GetScore();
+            if (loveCredit >= cost)
+            {
+                Purchase();
+                FindObjectOfType<ClickerManager>().SetClickerValue(clickValue);
+            }
+            else
+            {
+                // Do nothing
+            }
+        }
+        else
+        {
+            // Do nothing
+        }
+    }
+
+    // Process benefit for the special scrunchie
+    public void AdjustCompanionMultiplier()
+    {
+        if (!purchased)
+        {
+            var loveCredit = FindObjectOfType<ScoreManager>().GetScore();
+            if (loveCredit >= cost)
+            {
+                Purchase();
+                FindObjectOfType<AutoClickManager>().ChangeCompanionMultiplier(clickValue);
+            }
+            else
+            {
+                // Do nothing
+            }
+        }
+        else
+        {
+            // Do nothing
+        }
+    }
+
+    // Process benefit for the friendship bracelet
+    public void Companion()
+    {
+        if (!purchased)
+        {
+            var loveCredit = FindObjectOfType<ScoreManager>().GetScore();
+            if (loveCredit >= cost)
+            {
+                Purchase();
+                FindObjectOfType<AutoClickManager>().ChangeCompanionModifier(companionValue);
+            }
+            else
+            {
+                // Do nothing
+            }
         }
         else
         {
@@ -55,13 +119,6 @@ public class ItemManager : MonoBehaviour
         FindObjectOfType<ShopManager>().DebitScore(cost);
         purchased = true;
         GetComponent<Image>().color = new Color32(100, 100, 100, 100);
-        ApplyUpgrade();
-    }
-
-    // Applies the upgrade
-    private void ApplyUpgrade()
-    {
-        FindObjectOfType<AutoClickManager>().ActivateAutoClicker(braceletBoost);
     }
 
     // Returns the cost int

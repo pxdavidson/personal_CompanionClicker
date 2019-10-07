@@ -8,6 +8,7 @@ public class AutoClickManager : MonoBehaviour
     float rawTimeElapsed = 0f;
     int timeElapsed = 0;
     int companionMod = 1;
+    int companionMultiplier = 1;
     int lovePerSecond = 0;
 
     // Cache
@@ -40,7 +41,7 @@ public class AutoClickManager : MonoBehaviour
     // Calculates the current love per second
     private void CalculateLovePerSecond()
     {
-        int loveThisSecond = lovePerSecond * companionMod;
+        int loveThisSecond = lovePerSecond * companionMod * companionMultiplier;
         UpdateScoreManager(loveThisSecond);
     }
 
@@ -56,9 +57,17 @@ public class AutoClickManager : MonoBehaviour
         companionMod += newValue;
     }
 
+    // Changes the companion multiplier passed on the value passed in
+    public void ChangeCompanionMultiplier(int newValue)
+    {
+        companionMultiplier = newValue;
+    }
+
     // Sets the autoclicker to start
-    public void ActivateAutoClicker(int lps)
+    public void SetAutoClickValue(int lps)
     {
         lovePerSecond = lps;
     }
+
+
 }

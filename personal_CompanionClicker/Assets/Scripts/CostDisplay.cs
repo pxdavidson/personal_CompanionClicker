@@ -10,28 +10,19 @@ public class CostDisplay : MonoBehaviour
     Text text;
 
     // Cache
-    CompanionManager companionManager;
     ItemManager itemManager;
     
     // Start is called before the first frame update
     void Start()
     {
         text = GetComponent<Text>();
-        SetParentScript();
+        ObtainCostFromParent();
     }
 
-    private void SetParentScript()
+    private void ObtainCostFromParent()
     {
-        companionManager = GetComponentInParent<CompanionManager>();
-        if (!companionManager)
-        {
-            itemManager = GetComponentInParent<ItemManager>();
-            cost = itemManager.GetCost();
-        }
-        else
-        {
-            cost = companionManager.GetCost();
-        }
+        itemManager = GetComponentInParent<ItemManager>();
+        cost = itemManager.GetCost();
         UpdateText();
     }
 

@@ -5,7 +5,7 @@ using UnityEngine;
 public class ClickerManager : MonoBehaviour
 {
     // Variables
-    int clickValue = 5;
+    [SerializeField] int clickValue = 2;
 
     // Cache
 
@@ -26,5 +26,11 @@ public class ClickerManager : MonoBehaviour
     public void ButtonClicked()
     {
         FindObjectOfType<ScoreManager>().SetScore(clickValue);
+    }
+
+    // Sets the value given per click
+    public void SetClickerValue(int value)
+    {
+        clickValue = value;
     }
 }

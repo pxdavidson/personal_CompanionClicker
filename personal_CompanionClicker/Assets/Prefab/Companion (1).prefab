@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 5880667895345475887}
   - component: {fileID: 5880667895345475886}
   - component: {fileID: 5880667895345475921}
-  - component: {fileID: 5880667895345475884}
   m_Layer: 5
   m_Name: Companion (1)
   m_TagString: Untagged
@@ -117,7 +116,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5880667895345475884}
+      - m_Target: {fileID: 0}
         m_MethodName: CheckAvailable
         m_Mode: 1
         m_Arguments:
@@ -130,20 +129,6 @@ MonoBehaviour:
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &5880667895345475884
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5880667895345475923}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4213f698f59bea49aabbd228f2c7a38, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  companionValue: 8
-  companionCost: 50
 --- !u!1 &5880667895669512747
 GameObject:
   m_ObjectHideFlags: 0
